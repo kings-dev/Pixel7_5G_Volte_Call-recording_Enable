@@ -18,8 +18,9 @@ ui_print "> find iccid start ......customiz.sh"
 
 #######################################################################################################################
 ##----------------------------------------------------------------------##
-phone_iccid_path="/data_mirror/data_de/null/0/com.android.phone/files"
-# phone_iccid_path="/data/user_de/0/com.android.phone/files"
+# phone_iccid_path="/data_mirror/data_de/null/0/com.android.phone/files"
+phone_iccid_path="/data/user_de/0/com.android.phone/files"
+no_phone_iccid_name="carrierconfig-com.google.android.carrier-nosim.xml"
 ##----------------------------------------------------------------------##
 iccid_number_12="`service call iphonesubinfo 12 | cut -c 52-66 | tr -d '.[:space:]'`"
 iccid_number_13="`service call iphonesubinfo 13 | cut -c 52-66 | tr -d '.[:space:]'`"
@@ -200,6 +201,7 @@ IFS=$'\n'
 input_xml_texts='
 <boolean name="vonr_enabled_bool" value="true" />
 <boolean name="vonr_setting_visibility_bool" value="true" />
+<boolean name="vendor_hide_volte_settng_ui" value="false" />
 <boolean name="editable_enhanced_4g_lte_bool" value="true" />
 <boolean name="editable_wfc_mode_bool" value="true" />
 <boolean name="enhanced_4g_lte_title_variant_bool" value="true" />
@@ -208,7 +210,7 @@ input_xml_texts='
 <boolean name="hide_enhanced_4g_lte_bool" value="false" />
 <int name="lte_plus_threshold_bandwidth_khz_int" value="1" />
 <int name="nr_advanced_threshold_bandwidth_khz_int" value="1" />
-<boolean name="hide_lte_plus_data_icon_bool" value="false" />
+<boolean name="hide_lte_plus_data_icon_bool" value="true" />
 <boolean name="lte_enabled_bool" value="true" />
 <boolean name="show_data_connected_roaming_notification" value="true" />
 <boolean name="show_carrier_data_icon_pattern_string" value="true" />
@@ -231,6 +233,7 @@ xml_iccid_edit() {
 	for input_xml_text in $tac_input_xml_texts
 	do
 		sed -i "1a`echo "$input_xml_text"`" $iccid_xml_13
+		sed -i "1a`echo "$input_xml_text"`" $phone_iccid_path/$no_phone_iccid_name
     done
 ##-----------------------------tac------------------------##
 
@@ -256,13 +259,14 @@ xml_iccid_unedit() {
 	do
     	input_xml_untext="`echo "$input_xml_text" | sed 's/\//\\\\\//g'`"
     	sed -i "/`echo "$input_xml_untext"`/d" $iccid_xml_13
+    	sed -i "/`echo "$input_xml_untext"`/d" $phone_iccid_path/$no_phone_iccid_name
     done
 }
 
 cat << "EOF" > $phone_iccid_path/xml_edit_bashshell.sh
 #!/bin/bash
-phone_iccid_path="/data_mirror/data_de/null/0/com.android.phone/files"
-#phone_iccid_path="/data/user_de/0/com.android.phone/files"
+# phone_iccid_path="/data_mirror/data_de/null/0/com.android.phone/files"
+phone_iccid_path="/data/user_de/0/com.android.phone/files"
 ##----------------------------------------------------------------------##
 iccid_number_12="`service call iphonesubinfo 12 | cut -c 52-66 | tr -d '.[:space:]'`"
 iccid_number_13="`service call iphonesubinfo 13 | cut -c 52-66 | tr -d '.[:space:]'`"
@@ -285,6 +289,7 @@ IFS=$'\n'
 input_xml_texts='
 <boolean name="vonr_enabled_bool" value="true" />
 <boolean name="vonr_setting_visibility_bool" value="true" />
+<boolean name="vendor_hide_volte_settng_ui" value="false" />
 <boolean name="editable_enhanced_4g_lte_bool" value="true" />
 <boolean name="editable_wfc_mode_bool" value="true" />
 <boolean name="enhanced_4g_lte_title_variant_bool" value="true" />
@@ -316,6 +321,7 @@ xml_iccid_edit() {
 	for input_xml_text in $tac_input_xml_texts
 	do
     	sed -i "1a `echo "$input_xml_text"`" $iccid_xml_13
+    	sed -i "1a `echo "$input_xml_text"`" $phone_iccid_path/$no_phone_iccid_name
     done
 ##-----------------------------tac------------------------##
 
@@ -341,6 +347,7 @@ xml_iccid_unedit() {
 	do
     	input_xml_untext="`echo "$input_xml_text" | sed 's/\//\\\\\//g'`"
     	sed -i "/`echo "$input_xml_untext"`/d" $iccid_xml_13
+    	sed -i "/`echo "$input_xml_untext"`/d" $phone_iccid_path/$no_phone_iccid_name
     done
 }
 EOF
@@ -381,7 +388,8 @@ wait
 md5sum $iccid_xml_13 | awk '{print $1}' >> $phone_iccid_path/md5sum.xml | awk '{print $1}'
 xml_iccid_edit
 md5sum $iccid_xml_13 | awk '{print $1}' >> $phone_iccid_path/md5sum.xml | awk '{print $1}'
-chmod 0400 $iccid_xml_13
+chmod 0600 $iccid_xml_13
+chmod radio:radio $iccid_xml_13
 ###*^÷^**^÷^**^÷^**^÷^**^÷^*
 ###*^÷^**^÷^**^÷^**^÷^**^÷^**^÷^**^÷^**^÷^*###
 ##########################################################################################
@@ -436,7 +444,7 @@ set_permissions() {
   #set_perm_recursive $MODPATH$phone_iccid_path	1001	1001	0771	0600
   #set_perm $MODPATH$cfg_db_path	0	0	0644
   #set_perm $MODPATH$phenotype_db_path	10122	10122	0660
-  #set_perm $MODPATH$iccid_xml_13	1001	1001	0600
+  set_perm $iccid_xml_13	1001	1001	0600
 }
 # set_permissions
 
