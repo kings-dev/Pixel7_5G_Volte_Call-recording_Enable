@@ -4,7 +4,7 @@
 # Please don't hardcode /magisk/modname/... ; instead, please use $MODDIR/...
 # This will make your scripts compatible even if Magisk change its mount point in the future
 MODDIR=${0%/*}
-MODDIR=${0%/*} ZYGISK_ENABLED 1
+#. MODDIR=${0%/*} ZYGISK_ENABLED 1
 # This script will be executed in post-fs-data mode
 # More info in the main Magisk thread
 ##--------------------------------##
@@ -49,12 +49,10 @@ unzip -o "$ZIPFILE" sqlite3 -d $MODDIR >&2
 
 ################################################################
 ##------------------------------------------------------------##
-mkdir -p $MODDIR$cfg_path
 cp -rf $cfg_db_path $MODDIR$cfg_db_path
 ##------------------------------------------------------------##
-
 ################################################################
-set_perm  $MODDIR/sqlite3      0     0       0755
+# set_perm  $MODDIR/sqlite3      0     0       0755
 ################################################################
 IFS=$'\n'
 # cfg_db_texts=`cat << EOF
@@ -74,5 +72,4 @@ do
 done
 $MODDIR/sqlite3 -line $MODDIR$cfg_db_path "DELETE FROM regional_fallback WHERE ROWID NOT IN(select max(rowid) FROM regional_fallback GROUP BY carrier_id)"
 $MODDIR/sqlite3 -line $MODDIR$cfg_db_path "SELECT * FROM regional_fallback"
-
 
