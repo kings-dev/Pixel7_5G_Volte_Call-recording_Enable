@@ -205,6 +205,10 @@ print_ui_1=`cat $MODPATH$iccid_xml_13 | wc -l`
 ui_print "> ICCID XML file line count statistics = $print_ui_1"
 ui_print "> ICCID XML 文件行数统计 = $print_ui_1"
 #################################################################################
+### The content in input_xml_texts_line is a single-line content. 
+### Format: 
+### input_xml_texts_line='
+### xxxxxx'
 IFS=$'\n'
 input_xml_texts_line='
 <boolean name="vonr_enabled_bool" value="true" />
@@ -241,13 +245,13 @@ xml_iccid_edit_line() {
 		repeat_xml_line=`grep -n "$(echo "$input_xml_text_line_f")" $MODPATH$iccid_xml_13 | wc -l`
 		if [ "$repeat_xml_line" -ge 1 ]
 		then
-			echo "单行不写入: $input_xml_text_line_f 重复行数: $repeat_xml_line"
-			# ui_print "> Single line does not write: $input_xml_text_line_f Repeated lines: $repeat_xml_line"
-			ui_print "> 单行不写入: $input_xml_text_line_f 重复行数: $repeat_xml_line"
+			# echo "单行不写入: $input_xml_text_line_f 重复行数: $repeat_xml_line"
+			ui_print "> (Single line does not write|单行不写入): $input_xml_text_line_f (Repeated lines|重复行数): $repeat_xml_line"
+			# ui_print "> 单行不写入: $input_xml_text_line_f 重复行数: $repeat_xml_line"
 		else
-			echo "单行可写入: $input_xml_text_line_f"
-			# ui_print "> single line writable: $input_xml_text_line_f"
-			ui_print "> 单行可写入: $input_xml_text_line_f"
+			# echo "单行可写入: $input_xml_text_line_f"
+			ui_print "> (Single line writable|单行可写入): $input_xml_text_line_f"
+			# ui_print "> 单行可写入: $input_xml_text_line_f"
 			sed -i "1a `echo "$input_xml_text_line_f"`" $MODPATH$iccid_xml_13
 		fi
     done
@@ -255,6 +259,13 @@ xml_iccid_edit_line() {
 ################################################################################################
 
 ################################################################################################
+### Replace multiple lines of consecutive associated content.
+### Format: 
+### input_xml_texts_lines='
+### 11111x
+### 22222x
+### 33333x'
+### !!! Note that the current script only supports a set of multi-line consecutive internal heat checks and replaces.
 IFS=$'\n'
 input_xml_texts_lines='
 <int-array name="carrier_nr_availabilities_int_array" num="2">
@@ -284,13 +295,13 @@ xml_iccid_edit_lines() {
 		repeat_xml_lines=`echo $(cat $MODPATH$iccid_xml_13) | grep -o "$no_tac_input_xml_texts_lines" | wc -l`
 		if [ "$repeat_xml_lines" -ge 1 ]
 		then
-			echo "多行不写入: $input_xml_text_lines_f 重复行数: $repeat_xml_lines"
-			# ui_print "> Multiple lines are not written: $input_xml_text_lines_f Number of repeated rows: $repeat_xml_lines"
-			ui_print "> 多行不写入: $input_xml_text_lines_f 重复行数: $repeat_xml_lines"
+			# echo "多行不写入: $input_xml_text_lines_f 重复行数: $repeat_xml_lines"
+			ui_print "> (Multiple lines are not written|多行不写入): $input_xml_text_lines_f (Repeated lines|重复行数): $repeat_xml_lines"
+			# ui_print "> 多行不写入: $input_xml_text_lines_f 重复行数: $repeat_xml_lines"
 		else
-			echo "多行可写入: $input_xml_text_lines_f"
-			# ui_print "> Multiple lines can be written: $input_xml_text_lines_f"
-			ui_print "> 多行可写入: $input_xml_text_lines_f"
+			# echo "多行可写入: $input_xml_text_lines_f"
+			ui_print "> (Multiple lines can be written|多行可写入): $input_xml_text_lines_f"
+			# ui_print "> 多行可写入: $input_xml_text_lines_f"
 			sed -i "1a `echo "$input_xml_text_lines_f"`" $MODPATH$iccid_xml_13
 		fi
 	done
@@ -310,13 +321,13 @@ unxml_iccid_edit_line() {
 		then
 			input_xml_unedit="`echo "$input_xml_texts_line_unedit" | sed 's/\//\\\\\//g'`"
 			sed -i "/`echo "$input_xml_unedit"`/d" $MODPATH$iccid_xml_13
-			echo "单行可删除: $input_xml_texts_line_unedit"
-			# ui_print "> A single line can be deleted: $input_xml_texts_line_unedit"
-			ui_print "> 单行可删除: $input_xml_texts_line_unedit"
+			# echo "单行可删除: $input_xml_texts_line_unedit"
+			ui_print "> (Single line can be deleted|单行可删除):$input_xml_texts_line_unedit"
+			# ui_print "> 单行可删除: $input_xml_texts_line_unedit"
 		else
-			echo "单行不删除: $input_xml_texts_line_unedit 重复行数: $repeat_unxml_line"
-			# ui_print "> Single line is not deleted: $input_xml_texts_line_unedit Number of repeated rows: $repeat_unxml_line"
-			ui_print "> 单行不删除: $input_xml_texts_line_unedit 重复行数: $repeat_unxml_line"
+			# echo "单行不删除: $input_xml_texts_line_unedit 重复行数: $repeat_unxml_line"
+			ui_print "> (Single line is not deleted|单行不可删除): $input_xml_texts_line_unedit (Repeated lines|重复行数): $repeat_unxml_line"
+			# ui_print "> 单行不删除: $input_xml_texts_line_unedit 重复行数: $repeat_unxml_line"
 		fi
     done
 }
@@ -339,25 +350,25 @@ unxml_iccid_edit_lines() {
 	then
 # 		input_xml_unedits="`echo "$no_tac_input_xml_texts_lines" | sed 's/\//\\\\\//g'`"
 # 		sed -i "/`echo "$input_xml_unedits"`/d" $MODPATH$iccid_xml_13
-		echo "多行可删除: $no_tac_input_xml_texts_lines_d"
-		#ui_print "> Multiple lines can be deleted: $no_tac_input_xml_texts_lines_d"
-		ui_print "> 多行可删除: $no_tac_input_xml_texts_lines_d"
+		# echo "多行可删除: $no_tac_input_xml_texts_lines_d"
+		ui_print "> (Multiple lines can be deleted|多行可删除):$no_tac_input_xml_texts_lines_d"
+		# ui_print "> 多行可删除: $no_tac_input_xml_texts_lines_d"
 		#xml文件转义
 		n_unxml_lines=$(echo $(sed ':a;N;$!ba;s/\n/oko/g' $MODPATH$iccid_xml_13))
-		#这里不可以使用`$()`否则没有\n
-		echo -e $n_unxml_lines
-		#搜索内容转义
+		# 这里不可以使用`$()`否则没有\n
+		# echo -e $n_unxml_lines
+		# 搜索内容转义
 		t_unxml_lines=$(echo "$input_xml_texts_lines"|sed ':a;N;$!ba;s/\n/oko/g')
-		echo $t_unxml_lines
+		# echo $t_unxml_lines
 # 		oko=$(echo $n_unxml_lines |sed s#$t_unxml_lines##g)
 		okok=$(echo $t_unxml_lines|sed 's/^...//'|sed 's/...$//')
 		okokok=$(echo $n_unxml_lines |sed "s#$okok##g"|sed 's/oko/\n/g'|sed '/^$/d')
 		echo -e "$okokok" > $MODPATH$iccid_xml_13
 		# rm -f $MODPATH$iccid_xml_13.swp
 	else
-		echo "多行不删除！！！！！！: $no_tac_input_xml_texts_lines_d 重复行数: $repeat_unxml_lines"
-		# ui_print "> Do not delete multiple lines: $no_tac_input_xml_texts_lines_d Repeated lines: $repeat_unxml_lines"
-		ui_print "> 多行不删除: $no_tac_input_xml_texts_lines_d 重复行数: $repeat_unxml_lines"
+		#echo "多行不删除！！！！！！: $no_tac_input_xml_texts_lines_d 重复行数: $repeat_unxml_lines"
+		ui_print "> (Do not delete multiple lines|多行不删除): $no_tac_input_xml_texts_lines_d (Repeated lines|重复行数): $repeat_unxml_lines"
+		# ui_print "> 多行不删除: $no_tac_input_xml_texts_lines_d 重复行数: $repeat_unxml_lines"
 	fi
 }
 ################################################################################################
@@ -472,9 +483,9 @@ chmod 0600 $iccid_xml_13
 
 print_ui_0=`cat $MODPATH$iccid_xml_13 | wc -l`
 
-echo "修改行数: $print_ui_0 - $print_ui_1 = $(( print_ui_0 - print_ui_1 ))"
-ui_print "> Modify the number of lines: $print_ui_0 - $print_ui_1 = $(( print_ui_0 - print_ui_1 ))"
-ui_print "> 修改行数: $print_ui_0 - $print_ui_1 = $(( print_ui_0 - print_ui_1 ))"
+# echo "修改行数: $print_ui_0 - $print_ui_1 = $(( print_ui_0 - print_ui_1 ))"
+ui_print "> (Modify the number of lines|修改行数): $print_ui_0 - $print_ui_1 = $(( print_ui_0 - print_ui_1 ))"
+#ui_print "> 修改行数: $print_ui_0 - $print_ui_1 = $(( print_ui_0 - print_ui_1 ))"
 
 ##########################################################################################
 # Replace list
