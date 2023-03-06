@@ -66,4 +66,5 @@ input_xml_texts_lines='
 phone_iccid_path="/data_mirror/data_de/null/0/com.android.phone/files"  
 #######################################################################################################  
   
-
+!!!What is not currently working is uninstalling.sh modules: carrierconfig-com.google.android.carrier-xxxx-xxxx.xml  
+  
