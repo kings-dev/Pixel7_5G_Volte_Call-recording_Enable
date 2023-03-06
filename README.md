@@ -35,7 +35,7 @@ phenotype_db_path="/data/user/0/com.google.android.gms/databases/phenotype.db"
 #######################################################################################################  
 # The code is carrierconfig-com.google.android.carrier-xxxx-xxxx.xml  
 input_xml_texts_line='
-<boolean name="vonr_enabled_bool" value="true" />
+<boolean name="vonr_enabled_bool" value="true" \/>
 <boolean name="vonr_setting_visibility_bool" value="true" />
 <boolean name="vendor_hide_volte_settng_ui" value="false" />
 <boolean name="editable_enhanced_4g_lte_bool" value="true" />
