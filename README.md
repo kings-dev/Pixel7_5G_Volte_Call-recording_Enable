@@ -58,7 +58,7 @@ input_xml_texts_line='
 '  
   
 input_xml_texts_lines='  
-<int-array name="carrier_nr_availabilities_int_array" num="2">  
+<int-array name="carrier_nr_availabilities_int_array" num="2"\>  
 <item value="1" \/>  
 <item value="2" \/>  
 <\/int-array>  
