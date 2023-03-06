@@ -34,34 +34,34 @@ G__speak_easy_enable_listen_in_button
 phenotype_db_path="/data/user/0/com.google.android.gms/databases/phenotype.db"  
 #######################################################################################################  
 # The code is carrierconfig-com.google.android.carrier-xxxx-xxxx.xml  
-input_xml_texts_line='  
-<boolean name="vonr_enabled_bool" value="true" />  
-<boolean name="vonr_setting_visibility_bool" value="true" />  
-<boolean name="vendor_hide_volte_settng_ui" value="false" />  
-<boolean name="editable_enhanced_4g_lte_bool" value="true" />  
-<boolean name="editable_wfc_mode_bool" value="true" />  
-<boolean name="enhanced_4g_lte_title_variant_bool" value="true" />  
-<int name="enhanced_4g_lte_title_variant_int" value="1" />  
-<boolean name="enhanced_4g_lte_on_by_default_bool" value="true" />  
-<boolean name="hide_enhanced_4g_lte_bool" value="false" />  
-<int name="lte_plus_threshold_bandwidth_khz_int" value="1" />  
-<int name="nr_advanced_threshold_bandwidth_khz_int" value="1" />  
-<boolean name="hide_lte_plus_data_icon_bool" value="true" />  
-<boolean name="lte_enabled_bool" value="true" />  
-<boolean name="show_data_connected_roaming_notification" value="true" />  
-<boolean name="show_carrier_data_icon_pattern_string" value="true" />  
-<boolean name="carrier_volte_available_bool" value="true" />  
-<boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />  
-<boolean name="carrier_wfc_ims_available_bool" value="true" />  
-<boolean name="carrier_vt_available_bool" value="true" />  
-<boolean name="carrier_supports_ss_over_ut_bool" value="true" />  
+input_xml_texts_line='
+<boolean name="vonr_enabled_bool" value="true" />
+<boolean name="vonr_setting_visibility_bool" value="true" />
+<boolean name="vendor_hide_volte_settng_ui" value="false" />
+<boolean name="editable_enhanced_4g_lte_bool" value="true" />
+<boolean name="editable_wfc_mode_bool" value="true" />
+<boolean name="enhanced_4g_lte_title_variant_bool" value="true" />
+<int name="enhanced_4g_lte_title_variant_int" value="1" />
+<boolean name="enhanced_4g_lte_on_by_default_bool" value="true" />
+<boolean name="hide_enhanced_4g_lte_bool" value="false" />
+<int name="lte_plus_threshold_bandwidth_khz_int" value="1" />
+<int name="nr_advanced_threshold_bandwidth_khz_int" value="1" />
+<boolean name="hide_lte_plus_data_icon_bool" value="true" />
+<boolean name="lte_enabled_bool" value="true" />
+<boolean name="show_data_connected_roaming_notification" value="true" />
+<boolean name="show_carrier_data_icon_pattern_string" value="true" />
+<boolean name="carrier_volte_available_bool" value="true" />
+<boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+<boolean name="carrier_wfc_ims_available_bool" value="true" />
+<boolean name="carrier_vt_available_bool" value="true" />
+<boolean name="carrier_supports_ss_over_ut_bool" value="true" />
 '  
   
 input_xml_texts_lines='  
-<int-array name="carrier_nr_availabilities_int_array" num="2">  
-<item value="1" />  
-<item value="2" />  
-</int-array>  
+<int-array name="carrier_nr_availabilities_int_array" num="2">
+<item value="1" />
+<item value="2" />
+</int-array>
 '  
 phone_iccid_path="/data_mirror/data_de/null/0/com.android.phone/files"  
 #######################################################################################################  
