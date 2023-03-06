@@ -32,6 +32,9 @@ G__speak_easy_bypass_locale_check
 G__speak_easy_enable_listen_in_button  
 '  
 phenotype_db_path="/data/user/0/com.google.android.gms/databases/phenotype.db"  
+  
+!!!Need to clear the storage and cache of the phone app app. to take effect, record the call.  
+  
 #######################################################################################################  
 # The code is carrierconfig-com.google.android.carrier-xxxx-xxxx.xml  
 input_xml_texts_line='  
