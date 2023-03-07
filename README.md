@@ -17,7 +17,7 @@ cfg_db_texts='
 1436  
 2237  
 '  
-# cfg_db_path="/system/vendor/firmware/carrierconfig/cfg.db"  
+cfg_db_path="/system/vendor/firmware/carrierconfig/cfg.db"  
 #######################################################################################################
 # The code is phenotype.db  
 FLAGS='  
