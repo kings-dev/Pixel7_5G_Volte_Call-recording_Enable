@@ -1,5 +1,5 @@
 # Piexl7_5G_Volte_Call-recording_Enable  
-piexl 7 5G vlote Call recording enable  
+Piexl7 5G vlote Call recording enable  
 Turn on VO5G, wifi, and record calls. The premise requires the Network Signal Master app to turn on 5G.  
 #######################################################################################################  
 # The code is cfg.db for china.  
