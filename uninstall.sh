@@ -170,6 +170,7 @@ G__speak_easy_enabled
 G__enable_speakeasy_details
 G__speak_easy_bypass_locale_check
 G__speak_easy_enable_listen_in_button
+enable_crosby
 '
 # EOF`
 # tac_FLAGS="`echo "$FLAGS" | tac`"
