@@ -1,7 +1,12 @@
 #!/system/bin/sh
 MODPATH=${0%/*}
-MODPATH=${0%/*}
 . MODPATH=${0%/*} ZYGISK_ENABLED 1
+# Mute the call recording 🔇 replace rename starting_voice-**_**.wav.bak and ending_voice-**_**.wav.bak  *.wav
+wav_path="/data/data/com.google.android.dialer/files/callrecordingprompt"
+for file_name in `ls $wav_path/*.wav`
+do
+mv $file_name `echo $file_name | sed 's/\.wav\.bak/\.wav/'`
+done
 
 # . $MODPATH/unedit_cfg_phenotype_xml.sh
 
