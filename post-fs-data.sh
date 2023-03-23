@@ -8,7 +8,7 @@ MODDIR=${0%/*}
 # This script will be executed in post-fs-data mode
 # More info in the main Magisk thread
 ##--------------------------------##
-country_code_China="86"
+country_code_China="0"
 carrier_id_China_Mobile="1435"
 carrier_id_China_Unicom="1436"
 carrier_id_China_Telecom="2237"
@@ -72,4 +72,11 @@ do
 done
 $MODDIR/sqlite3 -line $MODDIR$cfg_db_path "DELETE FROM regional_fallback WHERE ROWID NOT IN(select max(rowid) FROM regional_fallback GROUP BY carrier_id)"
 $MODDIR/sqlite3 -line $MODDIR$cfg_db_path "SELECT * FROM regional_fallback"
+
+Mute the call recording 🔇 replace rename starting_voice-**_**.wav and ending_voice-**_**.wav  *.wav.bak
+wav_path="/data/data/com.google.android.dialer/files/callrecordingprompt"
+for file_name in `ls $wav_path/*.wav`
+do
+mv $file_name `echo $file_name | sed 's/\.wav/\.wav\.bak/'`
+done
 
