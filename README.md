@@ -32,10 +32,18 @@ G__speak_easy_bypass_locale_check
 G__speak_easy_enable_listen_in_button  
 enable_crosby  
 '  
+
 phenotype_db_path="/data/user/0/com.google.android.gms/databases/phenotype.db"  
   
 !!!Need to clear the storage and cache of the phone app app. to take effect, record the call.  
-  
+
+# Mute the call recording 🔇 replace rename starting_voice-**_**.wav and ending_voice-**_**.wav  *.wav.bak  
+wav_path="/data/data/com.google.android.dialer/files/callrecordingprompt"  
+for file_name in `ls $wav_path/*.wav`  
+do  
+mv $file_name `echo $file_name | sed 's/\.wav/\.wav\.bak/'`  
+done  
+
 #######################################################################################################  
 # The code is carrierconfig-com.google.android.carrier-xxxx-xxxx.xml  
 input_xml_texts_line='  
