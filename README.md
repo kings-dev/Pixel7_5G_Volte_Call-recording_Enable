@@ -3,12 +3,12 @@ piexl 7 5G vlote Call recording enable
 Turn on VO5G, wifi, and record calls. The premise requires the Network Signal Master app to turn on 5G.  
 #######################################################################################################  
 # The code is cfg.db for china.  
-country_code_China="86"  
+country_code_China="0"  
 carrier_id_China_Mobile="1435"  
 carrier_id_China_Unicom="1436"  
 carrier_id_China_Telecom="2237"  
 #################################  
-country_code_China="0"        Please modify :"Your country_code" or "0",Recommendation "0".  
+country_code_China="?"        Please modify :"Your country_code" or "0",Recommendation "0".  
 carrier_id_China_Mobile="?"   Please modify :"Your carrier_id" or Comment the line "#"  
 carrier_id_China_Unicom="?"   Please modify :"Your carrier_id" or Comment the line "#"  
 carrier_id_China_Telecom="?"  Please modify :"Your carrier_id" or Comment the line "#"  
@@ -30,6 +30,7 @@ G__speak_easy_enabled
 G__enable_speakeasy_details  
 G__speak_easy_bypass_locale_check  
 G__speak_easy_enable_listen_in_button  
+enable_crosby  
 '  
 phenotype_db_path="/data/user/0/com.google.android.gms/databases/phenotype.db"  
   
