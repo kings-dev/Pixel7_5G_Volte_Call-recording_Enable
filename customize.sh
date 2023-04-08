@@ -174,11 +174,11 @@ enable_crosby
 # EOF`
 
 # Mute the call recording 🔇 replace rename starting_voice-**_**.wav and ending_voice-**_**.wav  *.wav.bak
-wav_path="/data/data/com.google.android.dialer/files/callrecordingprompt"
-for file_name in `ls $wav_path/*.wav`
-do
-mv $file_name `echo $file_name | sed 's/\.wav/\.wav\.bak/'`
-done
+# wav_path="/data/data/com.google.android.dialer/files/callrecordingprompt"
+# for file_name in `ls $wav_path/*.wav`
+# do
+# mv $file_name `echo $file_name | sed 's/\.wav/\.wav\.bak/'`
+# done
 #
 #btac_FLAGS="`echo "$FLAGS" | tac`"
 tac_FLAGS="`echo "$FLAGS"`"
