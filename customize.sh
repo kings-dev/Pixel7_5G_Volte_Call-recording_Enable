@@ -2,7 +2,7 @@ chmod u+x "$MODPATH/sqlite3"
 chmod u+x "$MODPATH/uninstall.sh"
 # chmod u+x "$MODPATH/unedit_cfg_phenotype_xml.sh"
 ##--------------------------------##
-country_code_China="0"
+country_code_China="86"
 carrier_id_China_Mobile="1435"
 carrier_id_China_Unicom="1436"
 carrier_id_China_Telecom="2237"
