@@ -18,8 +18,9 @@ ui_print "> find iccid start ......customiz.sh"
 
 #######################################################################################################################
 ##----------------------------------------------------------------------##
-# phone_iccid_path="/data_mirror/data_de/null/0/com.android.phone/files"
-phone_iccid_path="/data/user_de/0/com.android.phone/files"
+phone_iccid_path="/data_mirror/data_de/null/0/com.android.phone/files"
+# phone_iccid_path="/data/user_de/0/com.android.phone/files"
+# phone_iccid_path="`readlink -f /data/user_de/0/com.android.phone/files`"
 # no_phone_iccid_name="carrierconfig-com.google.android.carrier-nosim.xml"
 ##----------------------------------------------------------------------##
 ##backup_Android13##
