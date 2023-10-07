@@ -22,8 +22,15 @@ phone_iccid_path="/data_mirror/data_de/null/0/com.android.phone/files"
 # phone_iccid_path="/data/user_de/0/com.android.phone/files"
 # no_phone_iccid_name="carrierconfig-com.google.android.carrier-nosim.xml"
 ##----------------------------------------------------------------------##
-iccid_number_12="`service call iphonesubinfo 12 | cut -c 52-66 | tr -d '.[:space:]'`"
-iccid_number_13="`service call iphonesubinfo 13 | cut -c 52-66 | tr -d '.[:space:]'`"
+##backup_Android13##
+#iccid_number_12="`service call iphonesubinfo 12 | cut -c 52-66 | tr -d '.[:space:]'`"
+#iccid_number_13="`service call iphonesubinfo 13 | cut -c 52-66 | tr -d '.[:space:]'`"
+##backup_Android13##
+##----------------------------------------------------------------------##
+##New_Android14##
+iccid_number_12="`service call iphonesubinfo 12 | cut -c 52-66 | tr -d '.[:space:]' | tr -d \'`"
+iccid_number_13="`service call iphonesubinfo 13 | cut -c 52-66 | tr -d '.[:space:]' | tr -d \'`"
+##New_Android14##
 ##-----------------------------------------------------------------------------------##
 iccid_xml_12="`find $phone_iccid_path -name carrierconfig-com.google.android.carrier-"$iccid_number_12"-*.xml`"
 iccid_xml_13="`find $phone_iccid_path -name carrierconfig-com.google.android.carrier-"$iccid_number_13"-*.xml`"
