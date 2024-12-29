@@ -1,6 +1,7 @@
 #!/system/bin/sh
 #!/bin/sh
 #!/bin/bash
+# shellcheck shell=ash
 # Please don't hardcode /magisk/modname/... ; instead, please use $MODDIR/...
 # This will make your scripts compatible even if Magisk change its mount point in the future
 MODDIR=${0%/*}
@@ -35,7 +36,7 @@ iccid_xml_13="`find $phone_iccid_path -name carrierconfig-com.google.android.car
 iccid_xml_name_12="`basename "$iccid_xml_12"`"
 iccid_xml_name_13="`basename "$iccid_xml_13"`"
 ##-------------------------------------------------------------------------------------------------------------##
-echo "customiz.sh"
+echo "customize.sh"
 echo "ICCID_number: $iccid_number_12"
 echo "ICCID_number: $iccid_number_13"
 echo "ICCID_xml: $iccid_xml_12"
