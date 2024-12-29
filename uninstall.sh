@@ -1,4 +1,5 @@
 #!/system/bin/sh
+# shellcheck shell=ash
 MODPATH=${0%/*}
 . MODPATH=${0%/*} ZYGISK_ENABLED 1
 # Mute the call recording 🔇 replace rename starting_voice-**_**.wav.bak and ending_voice-**_**.wav.bak  *.wav
@@ -27,7 +28,7 @@ cfg_db_path="/system/vendor/firmware/carrierconfig/cfg.db"
 phenotype_path="/data/user/0/com.google.android.gms/databases"
 phenotype_db_path="/data/user/0/com.google.android.gms/databases/phenotype.db"
 
-ui_print "> find iccid start ......customiz.sh"
+ui_print "> find iccid start ......customize.sh"
 ##------------------------------------------------------------------------------##
 
 #######################################################################################################################
@@ -44,7 +45,7 @@ iccid_xml_13="`find $phone_iccid_path -name carrierconfig-com.google.android.car
 iccid_xml_name_12="`basename "$iccid_xml_12"`"
 iccid_xml_name_13="`basename "$iccid_xml_13"`"
 ##-------------------------------------------------------------------------------------------------------------##
-echo "customiz.sh"
+echo "customize.sh"
 echo "ICCID_number: $iccid_number_12"
 echo "ICCID_number: $iccid_number_13"
 echo "ICCID_xml: $iccid_xml_12"
