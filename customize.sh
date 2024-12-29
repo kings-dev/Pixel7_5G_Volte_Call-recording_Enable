@@ -1,3 +1,4 @@
+# shellcheck shell=ash
 chmod u+x "$MODPATH/sqlite3"
 chmod u+x "$MODPATH/uninstall.sh"
 # chmod u+x "$MODPATH/unedit_cfg_phenotype_xml.sh"
@@ -13,7 +14,7 @@ cfg_db_path="/system/vendor/firmware/carrierconfig/cfg.db"
 phenotype_path="/data/user/0/com.google.android.gms/databases"
 phenotype_db_path="/data/user/0/com.google.android.gms/databases/phenotype.db"
 
-ui_print "> find iccid start ......customiz.sh"
+ui_print "> find iccid start ......customize.sh"
 ##------------------------------------------------------------------------------##
 
 #######################################################################################################################
@@ -40,7 +41,7 @@ iccid_xml_13="`find $phone_iccid_path -name carrierconfig-com.google.android.car
 iccid_xml_name_12="`basename "$iccid_xml_12"`"
 iccid_xml_name_13="`basename "$iccid_xml_13"`"
 ##-------------------------------------------------------------------------------------------------------------##
-echo "customiz.sh"
+echo "customize.sh"
 echo "ICCID_number: $iccid_number_12"
 echo "ICCID_number: $iccid_number_13"
 echo "ICCID_xml: $iccid_xml_12"
