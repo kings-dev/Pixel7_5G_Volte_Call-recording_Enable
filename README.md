@@ -45,7 +45,7 @@ mv \$file_name \`echo $file_name | sed 's/\.wav/\.wav\.bak/'\`
 done  
 !!!This failed 🔇 
 #######################################################################################################  
-# The code is carrierconfig-com.google.android.carrier-xxxx-xxxx.xml  
+# The code is carrierconfig-com.google.android.carrier-xxxx-xxxx.xml  edit for time: 2025/3/9 update.
 input_xml_texts_line='  
 <boolean name="vonr_enabled_bool" value="true" \/>  
 <boolean name="carrier_volte_available_bool" value="true" \/>  
